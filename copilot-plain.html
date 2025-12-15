@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Float-based Grid Layout</title>
+  <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+  <div class="outer">
+    <div class="inner">
+      <div class="left">
+        <div class="panel"></div>
+      </div>
+
+      <div class="right">
+        <div class="row row-top">
+          <div class="box small"></div>
+          <div class="box small"></div>
+          <div class="box small"></div>
+          <div class="box small"></div>
+        </div>
+
+        <div class="row row-mid">
+          <div class="col-left">
+            <div class="box mid"></div>
+            <div class="box mid"></div>
+          </div>
+          <div class="col-right">
+            <div class="box tall"></div>
+          </div>
+        </div>
+
+        <div class="row row-bottom">
+          <div class="box large left"></div>
+          <div class="box large right"></div>
+        </div>
+      </div>
+
+      <div style="clear:both"></div>
+    </div>
+  </div>
+</body>
+</html>

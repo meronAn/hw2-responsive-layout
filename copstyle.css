@@ -1,0 +1,34 @@
+.outer-frame {
+    border: 2px solid red;
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.sidebar {
+    height: 100vh;
+    border: 2px solid red;
+}
+
+.box {
+    border: 2px solid red;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mid-small {
+    min-height: 60px;
+}
+
+.mid-large {
+    min-height: 120px;
+}
+
+.bottom-wide {
+    min-height: 80px;
+}
+
+.bottom-medium {
+    min-height: 80px;
+}

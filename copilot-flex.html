@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Flexbox Layout — outer/inner</title>
+		<style>
+			:root{
+				--gap:12px;
+				--red:#ff4d4f;
+				--bg:#ffffff;
+			}
+			/* Reset */
+			*{box-sizing:border-box}
+			html,body{height:100%;margin:0;padding:16px;background:#f3f4f6;font-family:Arial,Helvetica,sans-serif}
+
+			/* Outer red frame */
+			.outer{border:6px solid var(--red);padding:8px}
+
+			/* Inner content area */
+			.inner{display:flex;gap:var(--gap);background:var(--bg);padding:var(--gap);min-height:60vh;align-items:stretch}
+
+			/* Two main columns */
+			.left{flex:0 0 220px;display:flex;flex-direction:column}
+			.right{flex:1 1 auto;display:flex;flex-direction:column;gap:var(--gap)}
+
+			/* Left panel (tall) */
+			.panel{background:#fff;border-radius:6px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:flex;align-items:flex-start;flex:1;border:4px solid var(--red)}
+
+			/* Generic box styling */
+			.box{background:#fff;border-radius:6px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;border:4px solid var(--red);height:100%}
+
+			/* Row top: four small boxes side-by-side */
+			.row-top{display:flex;gap:var(--gap)}
+			.box.small{flex:1 1 0;min-width:0}
+
+			/* Row mid: two column layout */
+			.row-mid{display:flex;gap:var(--gap)}
+			/* Make col-left equal to width of two .box.small (2 flex units out of 4) */
+			.col-left{flex:2 1 0;display:flex;flex-direction:column;gap:var(--gap)}
+			.col-right{flex:2 1 0;display:flex}
+			.box.mid{flex:1 1 0}
+			.box.tall{flex:1 1 0}
+
+			/* Row bottom: two large boxes side-by-side with ~64% / ~34% widths */
+			.row-bottom{display:flex;gap:var(--gap)}
+			.box.large.left{flex:0 0 64%}
+			.box.large.right{flex:0 0 34%}
+
+			/* Make the three right rows equal height and match the left panel */
+			.right{display:flex;flex-direction:column}
+			.row-top,.row-mid,.row-bottom{flex:1;display:flex;gap:var(--gap);align-items:stretch}
+
+			/* Ensure children fill their row heights */
+			.row-top .box.small{height:100%}
+			.col-left .box.mid{height:100%}
+			.col-left{gap:var(--gap)}
+			.col-left .box.mid{flex:1}
+			.col-right .box.tall{height:100%;width:100%}
+			.row-bottom .box.large.left,.row-bottom .box.large.right{height:100%}
+
+			/* Make elements shrink nicely on small widths */
+			.left .panel, .box{min-width:0}
+
+			/* Responsive: stack everything vertically under 750px */
+			@media (max-width:750px){
+				.inner{flex-direction:column}
+				.left{flex:0 0 auto}
+				.panel{min-height:0}
+				.right{flex:0 0 auto}
+
+				/* Each row becomes column */
+				.row-top,.row-mid,.row-bottom{flex-direction:column}
+				.row-top .box.small, .col-left .box.mid, .col-right .box.tall, .row-bottom .box.large.left, .row-bottom .box.large.right{flex:0 0 auto;width:100%}
+
+				/* Mobile: make all boxes the same fixed height using flexbox-only */
+				.box, .panel{flex:0 0 140px;height:140px}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="outer">
+			<div class="inner">
+				<div class="left">
+					<div class="panel"></div>
+				</div>
+
+				<div class="right">
+					<div class="row-top">
+						<div class="box small"></div>
+						<div class="box small"></div>
+						<div class="box small"></div>
+						<div class="box small"></div>
+					</div>
+
+					<div class="row-mid">
+						<div class="col-left">
+							<div class="box mid"></div>
+							<div class="box mid"></div>
+						</div>
+						<div class="col-right">
+							<div class="box tall"></div>
+						</div>
+					</div>
+
+					<div class="row-bottom">
+						<div class="box large left"></div>
+						<div class="box large right"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

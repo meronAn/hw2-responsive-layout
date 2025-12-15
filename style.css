@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    margin: 0;
+
+}
+
+.page {
+    width: 95%;
+    margin: 0 auto;
+    border: 2px solid red;
+    padding: 10px;
+
+    /* רווח קטן פנימי כמו בתמונה */
+}
+
+/* עיצוב כללי לכל הקופסאות */
+.box {
+    border: 2px solid red;
+    min-height: 90px;
+    background: white;
+}
+
+/* ניקוי floats */
+.clear {
+    clear: both;
+}
+
+/* עמודה שמאלית */
+.left {
+    float: left;
+    width: 18%;
+    min-height: 320px;
+
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-left: -10px;
+}
+
+/* צד ימין */
+.right {
+    float: left;
+    width: 82%;
+    padding-left: 10px;
+    /* רווח בין left ל-right */
+}
+
+/* --- TOP: 4 קופסאות בשורה --- */
+.top-box {
+    float: left;
+    width: calc(25% - 10px);
+    margin: 0 10px 10px 0;
+    /* רווח קטן בין הקופסאות */
+    min-height: 80px;
+}
+
+.top-box:nth-child(4) {
+    margin: 0 10px 10px 0;
+    ;
+    /* בלי רווח בקצה ימין */
+}
+
+/* --- MIDDLE --- */
+.mid-left {
+    float: left;
+    width: 50%;
+    padding-right: 10px;
+}
+
+.thin {
+    width: 100%;
+    min-height: 45px;
+    margin-bottom: 10px;
+}
+
+.mid-right {
+    float: left;
+    width: 50%;
+    min-height: 110px;
+    margin-bottom: 10px;
+}
+
+/* --- BOTTOM --- */
+.bottom-wide {
+    float: left;
+    width: 70%;
+    min-height: 90px;
+}
+
+.bottom-med {
+    float: left;
+    width: calc(30% - 10px);
+    margin-left: 10px;
+    /* רווח קטן בין שתיהן */
+    min-height: 90px;
+}
+
+
+@media (max-width: 750px) {
+
+    .left,
+    .right,
+    .top-box,
+    .mid-left,
+    .mid-right,
+    .bottom-wide,
+    .bottom-med {
+        float: none;
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 0;
+    }
+
+    .right {
+        padding-left: 0;
+    }
+}
